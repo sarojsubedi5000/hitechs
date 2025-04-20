@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Action</title>
+    <style>
+        /* Add styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            background-image: url('https://img.freepik.com/free-vector/abstract-technological-background_23-2148897676.jpg?t=st=1732511460~exp=1732515060~hmac=7d14f2e63639409d93cc0959464dd48292fed75abf1f84ea0e676a8bb0dc1a37&w=996');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            margin: 50px auto;
+            width: 80%;
+            max-width: 600px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: #4a90e2;
+        }
+
+        select, button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #357abd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Select Action</h2>
+        <form action="/process" method="post">
+            <input type="hidden" name="filename" value="{{ filename }}">
+            <label for="action">Choose an Action:</label>
+            <select name="action" required>
+                <option value="remove_duplicates">Remove Special Characters & Duplicates value from excel sheet</option>
+                <option value="convert_dates">Convert Dates (English to Nepali)</option>
+            </select>
+
+            <label for="column_to_check">Choose Column:</label>
+            <select name="column_to_check" required>
+                {% for column in columns %}
+                    <option value="{{ column }}">{{ column }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Process File</button>
+        </form>
+    </div>
+</body>
+</html>
