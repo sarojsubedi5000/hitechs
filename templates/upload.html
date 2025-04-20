@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <link rel="icon" href="images/monkey.jpeg" type="image/x-icon">
+    <style>
+        /* Set background color of the entire body */
+        body {
+            background-color: #ffe4e1; /* Soft pink color */
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://img.freepik.com/free-vector/gradient-abstract-wireframe-background_23-2149009903.jpg?t=st=1731910814~exp=1731914414~hmac=0e126ada9c76ffb82212c69f7adc355400349805775f67b2fa2cec2bfde1e59b&w=996');
+        }
+        /* Gradient header styling */
+        .header {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #ff7f50, #ff6347, #6c63ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        /* General styling for the form */
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f9;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            margin: 0 auto;
+            font-family: Arial, sans-serif;
+        }
+        /* Custom file upload button */
+        .custom-file-upload {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #6c63ff;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+        /* Hidden input field */
+        #file-upload {
+            display: none;
+        }
+        .custom-file-upload:hover {
+            background-color: #5a54d6;
+        }
+        /* Submit button styling */
+        #submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        #submit-btn:hover {
+            background-color: #0056b3;
+        }
+        /* Change hover color to green when Next button is active */
+        .next-btn {
+            background-color: #28a745 !important; /* Green color */
+        }
+        .next-btn:hover {
+            background-color: #218838 !important;
+        }
+        /* Add some responsiveness */
+        @media (max-width: 400px) {
+            .upload-form {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="header">Swastik Product Master Sheet Auto Checker</h1>
+    <form method="post" enctype="multipart/form-data" class="upload-form">
+        <label for="file-upload" class="custom-file-upload" id="file-label">
+            Choose a file
+        </label>
+        <input id="file-upload" type="file" name="file" required>
+        <input type="submit" value="Upload" id="submit-btn">
+    </form>
+
+    <script>
+        const fileInput = document.getElementById('file-upload');
+        const fileLabel = document.getElementById('file-label');
+        const submitBtn = document.getElementById('submit-btn');
+
+        fileInput.addEventListener('change', function() {
+            if (fileInput.files.length > 0) {
+                fileLabel.textContent = ' File Selected';
+                submitBtn.value = 'Next';
+                submitBtn.classList.add('next-btn');
+            }
+        });
+    </script>
+</body>
+</html>
